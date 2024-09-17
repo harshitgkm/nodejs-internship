@@ -8,11 +8,18 @@
         Installation: brew install zsh and then sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)".
     Benefits: Autocompletion, better history management, themes, and plugins for efficiency.
 
+    Setup documentation:
+    https://www.freecodecamp.org/news/how-to-configure-your-macos-terminal-with-zsh-like-a-pro-c0ab3f3c1156/
+
 2. Zsh (Oh My Zsh)
 
     What it is: A powerful shell with more features compared to Bash, and Oh My Zsh is a framework to manage its configuration.
     Why it's important: Zsh enhances developer productivity with autocompletion, shortcuts, and Git integration.
     How to configure: Set up themes like agnoster or powerlevel10k for a visually appealing and informative terminal.
+
+
+    Setup documentation:
+    https://www.freecodecamp.org/news/how-to-configure-your-macos-terminal-with-zsh-like-a-pro-c0ab3f3c1156/
 
     .zshrc file
 
@@ -67,6 +74,9 @@ Step-by-Step Guide to Setting Aliases in .zshrc
         Install Node: nvm install <version>
         Switch between versions: nvm use <version>.
 
+    NVM setup documentation:
+    https://medium.com/@priscillashamin/how-to-install-and-configure-nvm-on-mac-os-43e3366c75a6
+
 4. Visual Studio Code (VSCode)
 
     What it is: A lightweight code editor with great support for Node.js development.
@@ -78,6 +88,9 @@ Step-by-Step Guide to Setting Aliases in .zshrc
         Debugger for Node.js: To help with debugging Node.js applications.
         Live Share: For collaborative coding.
     Tips: Walk interns through setting up their workspace, configuring settings (e.g., auto-save, format on save).
+
+    VS Code setup tutorial:
+    https://www.youtube.com/watch?v=w0xBQHKjoGo
 
 5. Docker
 
@@ -91,6 +104,9 @@ Step-by-Step Guide to Setting Aliases in .zshrc
         docker run <image>: To run a Docker container.
         docker ps: To list running containers.
 
+    Docker installation tutorial:
+    https://www.youtube.com/watch?v=SGmFGYCuJK4
+
 6. Homebrew (brew)
 
     What it is: A package manager for macOS/Linux that simplifies software installation.
@@ -103,6 +119,10 @@ Step-by-Step Guide to Setting Aliases in .zshrc
 
     Example: brew install git to install Git.
 
+    Brew setup tutorial and official website:
+    https://www.youtube.com/watch?v=flQxyoyBX5M
+    https://brew.sh/
+
 7. SSH Configuration
 
     What it is: SSH (Secure Shell) allows you to securely connect to remote machines.
@@ -114,6 +134,8 @@ Step-by-Step Guide to Setting Aliases in .zshrc
     Usage: Demonstrate how to clone a GitHub repo via SSH: git clone git@github.com:user/repo.git.
 
     https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/
+
+    Git ssh setup tutorial : https://www.youtube.com/watch?v=O5H_KFzla6M
 
 8. Direnv
 
@@ -135,6 +157,9 @@ Step-by-Step Guide to Setting Aliases in .zshrc
         Customize themes and keyboard shortcuts.
         Enable split view for multitasking within the terminal.
     https://iterm2.com/downloads.html
+
+    Setup documentation:
+    https://www.freecodecamp.org/news/how-to-configure-your-macos-terminal-with-zsh-like-a-pro-c0ab3f3c1156/
 
 10. GitHub Account
 
