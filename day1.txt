@@ -1,0 +1,52 @@
+1. Shell (Bash / Zsh)
+
+    What it is: The shell is a command-line interface that allows you to interact with your operating system.
+    Why it's important: Many development tasks like running scripts, version control, and managing packages happen in the terminal.
+    How to set it up:
+        Mac users: By default, the shell is bash. We will install zsh for a more modern experience.
+        Zsh is highly customizable with plugins like Oh My Zsh.
+        Installation: brew install zsh and then sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)".
+    Benefits: Autocompletion, better history management, themes, and plugins for efficiency.
+
+2. Zsh (Oh My Zsh)
+
+    What it is: A powerful shell with more features compared to Bash, and Oh My Zsh is a framework to manage its configuration.
+    Why it's important: Zsh enhances developer productivity with autocompletion, shortcuts, and Git integration.
+    How to configure: Set up themes like agnoster or powerlevel10k for a visually appealing and informative terminal.
+
+    .zshrc file
+
+    * The .zshrc file is a configuration file for Zsh. It is a script that runs every time a new Zsh session starts (when you open a new terminal window, for example).
+
+You can use it to customize the Zsh environment to suit your preferences. This includes setting environment variables, changing the appearance of the prompt, or defining custom commands
+
+Common Uses:
+* Set Aliases: Define shortcuts for frequently used commands.
+alias ll='ls -l'
+
+
+Step-by-Step Guide to Setting Aliases in .zshrc
+1. Open Your Terminal:
+    * Launch your terminal application where you will enter the commands.
+2. Edit the .zshrc File:
+    * Use a text editor to open your .zshrc file. You can use editors like nano, vim, emacs, or any graphical text editor. Here’s how you can open it with nano:shCopy codenano ~/.zshrc
+    * 
+3. Add Your Aliases:
+    * Scroll to the end of the file or find a suitable section for your aliases. You can then add your alias commands. Each alias follows this general format:shCopy codealias alias_name='command_to_run'
+    * 
+    * Example:shCopy codealias ll='ls -l'
+    * alias gs='git status'
+    * alias update='sudo apt-get update && sudo apt-get upgrade'
+    * 
+        * alias ll='ls -l': This creates a shortcut ll that runs ls -l.
+        * alias gs='git status': This creates a shortcut gs that rusns git status.
+        * alias update='sudo apt-get update && sudo apt-get upgrade': This creates a shortcut update that runs a combination of commands.
+4. Save and Exit:
+    * After adding your aliases, save the changes and exit the text editor. In nano, you can do this by pressing Ctrl + X, then Y to confirm saving, and Enter to exit.
+5. Apply the Changes:
+    * To make sure your new aliases are available in your current terminal session, you need to reload the .zshrc file. You can do this by running:shCopy codesource ~/.zshrc
+    * 
+    * Alternatively, you can close and reopen your terminal, which will also apply the changes.
+6. Verify Your Aliases:
+    * To check if your aliases are working, you can type the alias name in the terminal and see if it executes the corresponding command.shCopy codell  # This should list files in long format.
+    * gs  # This should show the status of your Git repository.`
