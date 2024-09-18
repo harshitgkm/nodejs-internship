@@ -1,0 +1,93 @@
+//** Program to print even number from an array.
+
+const arr = [1,2,3,4,5,6,7,8,9,10]
+
+ arr.forEach((ele)=>{
+ 	if(ele%2==0)
+ 	console.log(ele)
+ })
+
+//** Program to print array of name and address from an array of objects.
+
+const obj = [
+{
+	name:"Harshit",
+	address: "udaipur",
+	number: 123456
+},
+{
+	name:"ABC",
+	address: "jaipur",
+	number: 1234567
+},
+{
+	name:"XYZ",
+	address: "delhi",
+	number: 1234589
+},
+{
+	name:"PQR",
+	address: "delhi",
+	number: 45678
+},
+]
+
+// console.log(obj[0].name + ":" + obj[0].address)
+
+
+
+// obj.forEach((ele)=>{
+// 	// console.log(ele.name + ":" + ele.address)
+// 	console.log(`${ele.name} : ${ele.address}`)
+// })
+
+//** Program to print array of name and address as well as string of name and address from an array of objects.
+
+
+
+const newArr = obj.map((ele)=>{
+	return (`${ele.name} : ${ele.address}`)
+})
+
+// obj.forEach((ele)=>{
+// 	console.log(`${ele.name} : ${ele.address}`)
+// })	
+
+//** Program to print name of the user having even phone number from an array of objects.
+
+
+// obj.forEach((ele)=>{
+	
+// 	if(ele.number %2==0){
+// 		console.log(ele.name)
+// 	}
+// })	
+
+
+const res = obj.filter(func)
+
+
+
+//sort ,reduce, - (number, strings , arrr of objects) map, forEach, find, filter
+
+
+1. map
+
+//example 1
+
+const number = [10,20,30,40,50]
+const newArr = numbers.map(multiplyByTen);
+
+function multiplyByTen (){
+    return num*10
+}
+
+
+//example 2
+
+const array1 = [1, 4, 9, 16];
+
+// Pass a function to map
+const map1 = array1.map((x) => x * 2);
+
+console.log(map1);
