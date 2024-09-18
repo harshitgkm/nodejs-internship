@@ -154,7 +154,7 @@ Step-by-Step Guide to Setting Aliases in .zshrc
     Why it's important: iTerm2 provides better customizability, split panes, session management, and more.
     How to install: Download from iTerm2.
     Tips:
-        Customize themes and keyboard shortcuts.
+        Customize themes and keyboard shortcuts. 
         Enable split view for multitasking within the terminal.
     https://iterm2.com/downloads.html
 
