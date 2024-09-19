@@ -1,0 +1,61 @@
+// *************** Typescript *****************
+
+// TypeScript is a superset of JavaScript that adds static types. This means you can define types for your variables, function parameters, and return values, making your code more robust and easier to understand.
+
+Key Differences Between TypeScript and JavaScript
+1. Typing:
+
+JavaScript: Dynamically typed. Types are determined at runtime, which can lead to runtime errors.
+TypeScript: Statically typed. You can define types at compile time, catching errors before code execution.
+
+example:
+// JavaScript
+let name = "Alice";
+name = 42; // No error, but this can cause issues later
+
+// TypeScript
+let name: string = "Alice";
+name = 42; // Error: Type 'number' is not assignable to type 'string'
+
+2. Interfaces
+
+JavaScript: No built-in way to define object shapes.
+TypeScript: Allows you to define interfaces to specify the structure of objects
+
+eg: 
+interface Person {
+    name: string;
+    age: number;
+}
+
+const person: Person = {
+    name: "Alice",
+    age: 30
+};
+
+
+//**** Features
+1. Type Aliases:
+
+You can create new names for types using type aliases.
+eg:
+type StringOrNumber = string | number;
+
+let value: StringOrNumber;
+value = "Hello"; // valid
+value = 42; // valid
+
+2. Error Detection: Catch errors at compile time rather than at runtime, reducing bugs.
+
+
+# ** Getting Started with TypeScript
+1. Install TypeScript: You can install TypeScript globally using npm:
+npm install -g typescript
+
+2. Create a TypeScript file: Save your TypeScript code in a file with the .ts extension, e.g., app.ts.
+
+3. Compile TypeScript to JavaScript: Use the TypeScript compiler (tsc) to compile your code.
+tsc app.ts
+
+4. Run the JavaScript code: After compiling, you can run the generated JavaScript file using Node.js:
+node app.js
