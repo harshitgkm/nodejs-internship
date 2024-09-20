@@ -10,7 +10,7 @@ TypeScript: Statically typed. You can define types at compile time, catching err
 
 example:
 // JavaScript
-let name = "Alice";
+const name = "Alice";
 name = 42; // No error, but this can cause issues later
 
 // TypeScript
@@ -59,3 +59,29 @@ tsc app.ts
 
 4. Run the JavaScript code: After compiling, you can run the generated JavaScript file using Node.js:
 node app.js
+
+
+
+
+// TypeScript basics
+
+1. TypeScript Arrays
+const names: string[] = [];
+names.push("Dylan"); // no error
+// names.push(3); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.
+
+
+2. TypeScript Tuples
+A tuple is a typed array with a pre-defined length and types for each index.
+
+let ourTuple : [number, boolean, string ]
+ourTuple = [5,false,"harshit]
+
+3. TypeScript Object Types
+
+const car : {name: string, model: string , year: number} = {
+    name: "ABC",
+    model: "XYZ",
+    year: 2024
+}
+
