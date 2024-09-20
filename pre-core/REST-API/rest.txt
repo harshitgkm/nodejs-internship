@@ -1,0 +1,136 @@
+
+
+localhost:5000/users -POST
+localhost:5000/users - GET
+localhost:5000/users/:id - GET
+localhost:5000/users/:id - PUT
+localhost:5000/users/:id - PATCH
+localhost:5000/users/:id - DELETE
+
+
+//query params {{}}/resourcec?:id={}&name={}
+// URL params  /resouce/:id
+//status codes
+//pagination, sorting, filtering
+//all HTTP methods include head
+
+//task
+// users and post are two resources, we have to write crud of these resources , query params, payload , endpoints,methods, endpoint, req.body, status code
+
+// qurery params end and start date using search query params, user ki post req me lagenge
+
+
+
+// https://www.atatus.com/blog/rest-api-design-filtering-sorting-and-pagination/#query-parameters
+
+//API pagination
+// It's a technique used in API design and development that allows you to take a REST API endpoint's response and segment it into smaller, manageable units. 
+//eg: localhost:5000/contacts?limit=10&offset=20
+
+
+//Filtering
+// Filtering in REST API refers to the process of limiting the result set of an API request based on specific criteria.
+// eg: GET /items?price=20-60
+
+
+
+//Task 1
+//Users
+
+1. localhost:5000/users (POST)
+Request body (Payload):
+{
+  "username": "harshit",
+  "email": "harshit@email",
+}
+status Code: 201 Created
+error status Code: 400 Bad Request
+
+2. localhost:5000/users (GET)
+Query Parameters: localhost:5000/users?limit=10&offset=20&sort=asc
+Status Code: 200 OK
+Response:
+[
+  {
+    "id": "23443423424",
+    "username": "harshit",
+    "email": "harshit@email.com"
+  }
+]
+
+3. localhost:5000/users/:id (GET)
+Success Status Code: 200 OK
+error Code: 404 Not Found
+Response:
+
+{
+  "id": "12234234",
+  "username": "harshit",
+   "email": "harshit@email.com"
+}
+
+4. localhost:5000/users/:id (PUT)
+Request Body (Payload):
+
+{
+  "username": "harshit",
+  "email": "harshit@email"
+}
+Success Status Code: 200 OK
+error Code: 400 Bad Request / 404 Not Found
+
+5. localhost:5000/users/:id (DELETE)
+Status Code: 204 No Content
+error Status Code: 404 Not Found
+
+
+
+//POSTS 
+1. localhost:5000/posts (POST)
+Request body (Payload):
+{
+  "title": "harshit",
+}
+status Code: 201 Created
+error Code: 400 Bad Request
+
+2. localhost:5000/posts (GET)
+Query Parameters: localhost:5000/posts?limit=10&offset=20&sort=asc
+Status Code: 200 OK
+Response:
+[
+  {
+    "id": "23443423424",
+    "title": "test",
+  }
+]
+
+3. localhost:5000/posts/:id (GET)
+Success Status Code: 200 OK
+error Code: 404 Not Found
+Response:
+
+{
+  "id": "12234234",
+  "title": "test",
+}
+
+4. localhost:5000/posts/:id (PUT)
+Request Body (Payload):
+
+{
+  "title" : "test"
+}
+Success Status Code: 200 OK
+error Code: 400 Bad Request / 404 Not Found
+
+5. localhost:5000/posts/:id (DELETE)
+Status Code: 204 No Content
+error Status Code: 404 Not Found
+
+
+//Task 2
+// localhost:5000/posts?start=2012-01-01&end=2012-01-31
+
+
+
