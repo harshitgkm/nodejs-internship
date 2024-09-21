@@ -136,3 +136,8 @@ Go to your forked repository on GitHub.
 You should see a prompt to create a pull request for your newly pushed branch. Click on "Compare & pull request."
 Ensure that the base repository is set to the original repository and the base branch is the main branch (or the appropriate branch). Your head repository should be your fork and your new branch.
 Fill in the title and description for the pull request, then click "Create pull request."
+
+
+
+************* remove git submodules (unclickable folder) *************
+https://www.linkedin.com/pulse/resolving-unclickable-folder-issue-github-repository-opoku-mensah-hxfne
