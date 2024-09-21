@@ -129,7 +129,7 @@ Status Code: 204 No Content
 error Status Code: 404 Not Found
 
 
-//Task 2
+//Task 2 of REST
 // localhost:5000/posts?start=2012-01-01&end=2012-01-31
 
 
