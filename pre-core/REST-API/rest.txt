@@ -133,4 +133,9 @@ error Status Code: 404 Not Found
 // localhost:5000/posts?start=2012-01-01&end=2012-01-31
 
 
+// The HEAD HTTP method is similar to the GET method, but it only retrieves the headers of a resource, not the actual content.
+// Purpose: To get metadata (like content type, content length, etc.) about a resource without downloading the whole thing.
+
+
+// req.query,params,body,cors,headers, req body, res body, post
 
