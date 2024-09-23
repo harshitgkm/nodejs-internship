@@ -86,7 +86,7 @@ error Status Code: 404 Not Found
 
 
 //POSTS 
-1. localhost:5000/posts (POST)
+1. localhost:5000/users/posts (POST)
 Request body (Payload):
 {
   "title": "harshit",
@@ -133,9 +133,183 @@ error Status Code: 404 Not Found
 // localhost:5000/posts?start=2012-01-01&end=2012-01-31
 
 
-// The HEAD HTTP method is similar to the GET method, but it only retrieves the headers of a resource, not the actual content.
+//******** The HEAD HTTP method is similar to the GET method, but it only retrieves the headers of a resource, not the actual content.
 // Purpose: To get metadata (like content type, content length, etc.) about a resource without downloading the whole thing.
 
+//********  OPTIONS: This response indicates that the client can use the GET, POST, and OPTIONS methods for the /users resource.
 
 // req.query,params,body,cors,headers, req body, res body, post
 
+
+******************* Query parameters ******************
+Query parameters are key-value pairs added to the end of a URL to provide additional information or modify the request when accessing a resource. They are often used to filter, sort, or paginate data. Query parameters start with a question mark (?) and multiple parameters are separated by ampersands (&).
+
+Structure of Query Parameters
+Here’s a simple structure:
+
+http://example.com/resource?key1=value1&key2=value2
+
+
+#Examples
+**Filtering Results:
+Example: GET /products?category=shoes
+Use Case: This retrieves products specifically in the "shoes" category.
+
+** Sorting Data:
+Example: GET /products?sort=price
+Use Case: This might sort the products by their price, either ascending or descending based on the API design.
+
+
+**Pagination:
+Example: GET /articles?page=2&limit=10
+Use Case: This retrieves the second page of articles, showing 10 articles per page.
+
+
+**Searching:
+Example: GET /search?query=javascript
+Use Case: This searches for resources related to "javascript".
+
+
+************** Path variable ******************
+Path variables (or path parameters) are segments of a URL that specify specific resources within a path. They are part of the URL path itself, used to identify a particular resource or resources.
+
+How Path Variables Work
+Path variables are used to uniquely identify a resource. For example, if you want to access user details, you would use their user ID.
+
+structure : http://example.com/users/{userId}
+example : http://example.com/users/123 (can be used for GET, PUT, PATCH ,DELETE)
+
+
+**************** Request headers *****************
+Request headers are key-value pairs sent as part of an HTTP request. They provide additional information about the request, such as the type of data being sent, the client's capabilities, and authentication details. Headers help the server understand how to process the request and respond accordingly.
+
+## Common Request Headers
+
+1. Content-Type: Specifies the media type of the resource being sent.
+*Example: Content-Type: application/json
+*Use Case: Used in a POST request to indicate that the body contains JSON data.
+
+2. Authorization: Contains credentials for authenticating the client to the server.
+*Example: Authorization: Bearer <token>
+*Use Case: Used in API calls to authorize access to protected resources.
+
+3. Accept: Indicates the media types that the client is willing to receive.
+*Example: Accept: application/json
+*Use Case: Informs the server that the client expects a JSON response.
+
+4. User-Agent: Provides information about the client application making the request.
+Example: User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+
+5. Cookie: Contains stored cookies previously set by the server.
+*Example: Cookie: sessionId=abc123
+*Use Case: Used for maintaining sessions across requests.
+
+
+
+************** Response headers ********************
+
+Response headers are key-value pairs sent by the server back to the client in an HTTP response. They provide essential information about the server’s response, including metadata, caching policies, content types, and status details.
+
+# Common Response Headers
+
+* Content-Type: Indicates the media type of the resource being returned.
+* Content-Length: The size of the response body in bytes.
+
+
+
+************ API keys *************
+2. API Keys
+API keys are simple strings used to identify a client application. They are often sent in request headers or as query parameters.
+
+Example:
+GET /api/resource?api_key=your_api_key
+Use Case: A weather API might require an API key to allow access to its data. The server uses the key to track usage and enforce rate limits.
+
+
+3. Bearer Tokens
+Bearer tokens are access tokens used in token-based authentication. They are typically sent in the Authorization header.
+
+Example:
+Authorization: Bearer your_access_token
+Use Case: After a user logs in, they receive a bearer token. This token is used for subsequent API requests, allowing the user to access protected resources.
+
+4. OAuth
+OAuth (Open Authorization) is a standard for access delegation, allowing third-party applications to access user data without exposing their credentials. OAuth can be used for obtaining bearer tokens.
+
+Flow Example:
+
+The user is redirected to the OAuth provider (like Google).
+The user grants permission to the application.
+The application receives an authorization code.
+The application exchanges this code for a bearer token.
+Use Case: An app allowing users to log in using their Google account. This way, the app accesses the user's profile without needing their Google password.
+
+
+5. JSON Web Tokens (JWT)
+JWT is a compact, URL-safe token format. It consists of three parts: a header, a payload, and a signature. JWTs can be used for stateless authentication.
+Use Case: After logging in, a user receives a JWT that they send with every request. The server verifies the token to authenticate the user without needing session storage.\
+
+
+6. Cookies
+Cookies are small pieces of data stored in the user's browser. They can be used for maintaining sessions and storing user preferences.
+
+Example: After logging in, a cookie might be set like this:
+css
+Set-Cookie: sessionId=abc123; HttpOnly; Secure
+Use Case: A user logs into a website, and their session is stored in a cookie, allowing them to remain logged in as they navigate the site.
+
+7. Sessions
+Sessions are server-side storage of user data. A session ID is usually stored in a cookie on the client-side to keep track of the user's state.
+
+Example: When a user logs in, a session is created on the server:
+sessionId: abc123
+Use Case: A shopping cart where items are stored in a session allows users to continue shopping without losing their selections.
+
+8. Tokens
+Tokens are general terms for any kind of credential used for authentication. This can include bearer tokens, JWTs, and others.
+Use Case: When users log in to an app, they receive a token that they must include in subsequent requests to access protected resources.
+Summary of Use Cases
+
+********* Throttling ***********
+* Throttling is a technique used to control the amount of traffic sent or received by a system to prevent it from being overwhelmed.
+When a user exceeds a specified limit, throttling may delay or queue their requests rather than rejecting them outright. This ensures that the system can handle incoming requests without crashing or becoming unresponsive.
+* Throttling Limit: The system can process 5 uploads per minute. If a user attempts to upload more than that, the excess uploads will be delayed.
+
+
+************** 1. req.query **************
+* This contains the query string parameters from the URL.
+Use case: Typically used for filtering, sorting, or pagination.
+Example: For a request to /search?term=apple&page=2, you can access the query parameters like this:
+
+app.get('/search', (req, res) => {
+  const term = req.query.term; // "apple"
+  const page = req.query.page; // "2"
+  res.send(`Searching for ${term} on page ${page}`);
+});
+
+************** 2. req.params ***************
+* This contains route parameters, which are part of the URL path.
+Use case: Commonly used to capture dynamic segments of the URL.
+Example: For a request to /users/123, you can access the user ID like this:
+
+app.get('/users/:id', (req, res) => {
+  const userId = req.params.id; // "123"
+  res.send(`Fetching user with ID: ${userId}`);
+});
+
+*************** 3. req.body *****************
+* This contains the body of the request, typically used with POST, PUT, or PATCH methods.
+Use case: Used to send data to the server, like creating or updating resources.
+Example: For a POST request with JSON data to /users, you can access the user data like this:
+
+app.post('/users', (req, res) => {
+  const newUser = req.body; // { name: "John", age: 30 }
+  res.send(`Creating user: ${newUser.name}, age: ${newUser.age}`);
+});
+
+
+// Additional resources
+* REST API tutorial : https://www.youtube.com/playlist?list=PLwGdqUZWnOp1ve9jXCz9apbouv-eAMi6E
+* POSTMAN : https://www.youtube.com/watch?v=4-DmsxM347k
+* HTTP status codes : MDN docs and https://gist.github.com/sandrabosk/d125177b31eca8dc3e5c524e703ba94d
+* free APIs : https://api.freeapi.app

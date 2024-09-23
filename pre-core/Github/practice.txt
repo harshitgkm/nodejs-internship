@@ -5,21 +5,6 @@
 
 base branch - main/master
 
-
-main->stage->feature/intial-setup
-stage->feature/feature-name2
-stage->feature/feature-name3
-
-
-after merging all the sub-branches back to the stage, then
-
-main->release
-
-all stage changes to release
-
-release->main
-
-
 ** git alternatives : AWS CodeCommit, Helix Core, Azure DevOps Server
 ** Top GitHub Enterprise Alternatives : GitLab, Bitbucket
 ** git vs github : Git is a software.	GitHub is a service.
@@ -56,34 +41,28 @@ Install Oh My Zsh:
 If you don’t have it installed, you can do so with this command:
 
 ** bash **
-
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 Change Theme:
-
 Oh My Zsh comes with themes that show the current Git branch by default. You can set a theme like agnoster or powerlevel10k. To change the theme:
 
 Open your .zshrc:
 ** bash **
-
 nano ~/.zshrc
+
 Find the line that starts with ZSH_THEME= and change it to one of the themes that display the branch name, e.g.:
-
 ** bash **
-
 ZSH_THEME="agnoster"
 Save and exit (Ctrl + O, then Enter, then Ctrl + X).
 
 Source the Configuration:
-
 Run:
-
 ** bash **
 source ~/.zshrc
 
 
 
-***** 1. Forking a repo from GitHub and then create a branch to make changes and then create a pull request to merge.
+*********** 1. Forking a repo from GitHub and then create a branch to make changes and then create a pull request to merge. ********
 
 Step 1: Fork the Repository
 Go to the GitHub repository you want to contribute to.
@@ -141,3 +120,22 @@ Fill in the title and description for the pull request, then click "Create pull 
 
 ************* remove git submodules (unclickable folder) *************
 https://www.linkedin.com/pulse/resolving-unclickable-folder-issue-github-repository-opoku-mensah-hxfne
+
+
+*********** git revert**********
+https://www.youtube.com/watch?v=BzjgJ7vvXVM
+
+
+
+************ git reference articles *************
+https://docs.google.com/document/d/1cJtKxhrvSjzBu61gYeOjCRF6QDbbfbTREzf4ygCBH-g/edit
+https://www.atlassian.com/git
+https://www.lullabot.com/articles/git-best-practices-workflow-guidelines
+https://levelup.gitconnected.com/top-30-git-commands-you-should-know-to-master-git-cli-f04e041779bc
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534
+https://medium.com/@abhay.pixolo/naming-conventions-for-git-branches-a-cheatsheet-8549feca2534
+
+
+************ git tutorial reference *************
+https://www.youtube.com/watch?v=q8EevlEpQ2A
