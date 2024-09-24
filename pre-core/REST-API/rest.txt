@@ -313,3 +313,61 @@ app.post('/users', (req, res) => {
 * POSTMAN : https://www.youtube.com/watch?v=4-DmsxM347k
 * HTTP status codes : MDN docs and https://gist.github.com/sandrabosk/d125177b31eca8dc3e5c524e703ba94d
 * free APIs : https://api.freeapi.app
+
+
+
+
+//Create variable - global and local
+//How to share your collection
+//Authentication vs authorization
+// when to use form data and when to use raw, what is binary
+//read about different "body" mechanism
+//country, state, city
+
+
+
+* form-data: File uploads and forms.
+* x-www-form-urlencoded: key-value pairs in forms.
+* raw: Flexible, allows JSON/XML/HTML.
+* binary: For file uploads.
+* Text: For plain text.
+
+
+//post response - postman automation 
+//pre -req, post request
+//authorization - differnet auth type
+//json placeholder (public api) ke response ki value ko env me save karna -using postscript
+
+
+************ pre-req script *************
+script : pm.globals.set("var2",2)
+reference : https://www.youtube.com/watch?v=iGDbkoPBtI4
+
+
+*********** post-res script **********
+To save a value from a JSON response into an environment variable in Postman using a pre-request script or test script
+
+   let responseData = pm.response.json();    pm.environment.set("postId", responseData[0].id);
+   pm.globals.set("postId", responseData[0].id);
+  
+
+************ varaiables in postman ********
+https://www.youtube.com/watch?v=Q-j_6fE2yTc&t=0s
+
+********** enviornment ***********
+An environment is a set of variables that you can use in your requests.
+
+Imagine you have two environments: Development and Production.
+In the Development environment, you might have:
+baseUrl: https://dev.api.example.com
+apiKey: dev123
+In the Production environment, you might have:
+baseUrl: https://api.example.com
+apiKey: prod456
+
+
+*********** collection ********
+A collection is a group of related API requests. 
+
+
+
