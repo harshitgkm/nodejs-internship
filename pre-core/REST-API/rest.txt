@@ -371,3 +371,74 @@ A collection is a group of related API requests.
 
 
 
+************** MVC architecture ***************
+
+MVC (Model-View-Controller) is a design pattern used in software development to separate concerns, making applications easier to manage, scale, and test
+
+Components of MVC
+
+*Model:
+This is the part of the application that handles data and business logic. It represents the information (data) and the rules for how that data can be created, stored, and changed.
+Example: In a library system, the model would represent books, authors, and the rules for borrowing and returning books.
+
+*View:
+This is what the user interacts with. It displays the data from the model in a user-friendly format. The view gets information from the model and presents it, but it doesn’t manipulate the data directly.
+Example: In our library system, the view would be the web page that shows a list of available books or a form for checking out a book.
+
+*Controller:
+This acts as an intermediary between the Model and the View. It listens to user input (like clicks or form submissions), processes it (potentially changing the model), and updates the view accordingly.
+Example: If a user clicks "borrow book," the controller processes that action, updates the model to mark the book as borrowed, and then refreshes the view to show the updated list of available books.
+
+
+
+
+*********** authorization types **************
+JWT (JSON Web Token)
+What it is: JWT is a compact, URL-safe means of representing claims to be transferred between two parties. It’s often used for securely transmitting information about users.
+
+How it works:
+
+User logs in: When a user logs in, the server validates their credentials (like username and password).
+Token generation: If valid, the server creates a JWT that includes user information (like user ID) and a signature to verify its authenticity.
+Token sent to client: This token is sent back to the client (like a web browser).
+Subsequent requests: The client sends the JWT with each subsequent request to access protected resources. The server can verify the token and grant access.
+Example: When you log into a website, the site might give you a JWT that allows you to stay logged in without having to enter your password again.
+
+* O-Auth - Access without password
+https://www.youtube.com/watch?v=VZH_lGxqFYU
+https://www.youtube.com/watch?v=sjvL24fciQg - o-auth2
+
+o-auth is a method through which 2 websites/applications can communicate with each other without the need of username and password of the user
+
+
+// 1. Basic Auth
+What it is: Basic Authentication is a simple authentication scheme built into the HTTP protocol. It involves sending a username and password with each request.
+
+// 2. bearer token
+Bearer Tokens are commonly used for APIs, especially with OAuth.
+
+
+// base64decoding, coookie based authentication, sessions, storage types in frontend(specially cookies)
+
+
+pastman req.headers and response headers, authorization types in postman, api rate limiting
+
+********Cookie-Based Authentication
+
+When a user logs in, the server generates a token (usually a JSON Web Token, or JWT) and sends it to the client.
+This token is stored in a cookie on the client’s browser.
+The cookie is sent with every request to the server, allowing the server to identify the user.
+
+Example:
+User logs in with their credentials.
+The server verifies the credentials and creates a JWT.
+The server sets a cookie in the user's browser with the JWT.
+On subsequent requests, the browser automatically includes the cookie, allowing the server to authenticate the user.
+
+
+
+************ Access token and refresh token ************
+article : https://www.descope.com/blog/post/access-token-vs-refresh-token
+Tutorial: https://www.youtube.com/watch?v=L2_gIrDxCes
+
+
