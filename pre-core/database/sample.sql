@@ -1,9 +1,3 @@
--- SELECT CONCAT("FirstName",' ', "LastName") 
---     AS "FullName"
--- from "Customer"
---     order by "FirstName";
-
-
 -- Tasks
 
 -- 1. Perform aggregation function on “Track” table 
