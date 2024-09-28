@@ -50,3 +50,13 @@ FROM
     "Invoice"
 WHERE 
     "InvoiceDate" >= '2009-01-01' AND "InvoiceDate" < '2009-04-01';
+
+
+
+-- 1. Aggregate
+-- 2. Joins
+-- 3. Sql queries
+-- 4. Having
+-- 5. Explore pg_restore command
+-- 6. Explore draw.io
+-- 7. SOLID principles
