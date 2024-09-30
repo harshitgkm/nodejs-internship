@@ -1,0 +1,49 @@
+Important topics
+
+1. Indexing
+	- regular indexing
+	- composite indexing.
+2. uuid
+3. extensions.
+4. constraints
+	- required
+	- unique
+	- Enums 
+	- foreign key
+5. soft delete or archive
+6. variable convention in postgress -> :userID this created a variable that will be prompt to input when running a query.
+7. joins and subqueries
+
+
+todo
+1. Arrays in postgress
+2. CASCADE
+3. Task
+
+	track, playlist, album, artist, genre
+
+	write apis for crud operations, write queries, payload, etc.
+
+	format --
+
+	url,
+	method,
+	body,
+	response,
+	status,
+	query
+
+
+get the row after update
+	->
+	update users
+	set name=""
+	where id = ''
+	returning *;
+
+Use soft delete using update keyword for any delete query.
+
+
+* SQL practice
+1. https://pgexercises.com/
+2. https://www.sql-practice.com/
