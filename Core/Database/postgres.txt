@@ -47,3 +47,35 @@ Use soft delete using update keyword for any delete query.
 * SQL practice
 1. https://pgexercises.com/
 2. https://www.sql-practice.com/
+
+****** where vs having *******
+https://www.javatpoint.com/where-vs-having#:~:text=We%20cannot%20use%20the%20WHERE,works%20for%20filtering%20individual%20rows.
+
+
+******* RETURNING ********: 
+This clause indicates that the command should return the modified rows after the update operation. The asterisk (*) means that all columns of the updated rows will be returned. This is useful for confirming what changes were made or for retrieving the updated state of the record.
+
+
+****** CASCADE *******
+
+CASCADE in SQL is used to simultaneously delete or update an entry from both the child and parent table. The keyword CASCADE is used as a conjunction while writing the query of ON DELETE or ON UPDATE. If the cascade keyword is added to a query written for the parent table, then both the parent and child tables change accordingly on the execution of the query.
+
+CASCADE helps maintain referential integrity between tables. When a record in the parent table is deleted, all related records in the child table are also removed, preventing orphaned records.
+
+
+******** Soft delete *********
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    deleted_at TIMESTAMP NULL
+);
+
+UPDATE users
+SET deleted_at = CURRENT_TIMESTAMP
+WHERE id = 1;  -- Mark user with id = 1 as deleted
+
+
+
+********** Archive ********
+Archiving involves moving data that is no longer actively used to a separate table or storage system. This helps improve performance and manageability by keeping the main table smaller and more efficient.
