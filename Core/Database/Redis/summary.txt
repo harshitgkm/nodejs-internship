@@ -1,0 +1,13 @@
+---- Session summary -----
+
+- Redis conventions 
+- Redis snapshot
+- Redis modules
+- Read from cache ->  <- Read from DB
+- Read from DB -> <- Read from cache
+- Write to cache ->  <- Write to DB
+- Write to DB  ->  <- Write to cache
+- Read and write replica
+- TTL 
+- Instagram Justin Beiber probelem
+- Handle exponential data growth
