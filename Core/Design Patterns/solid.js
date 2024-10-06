@@ -1,245 +1,254 @@
-//SOLID Principles
-
-
 1. Single Responsibility Principle
-//Use Case :-  a single UserManager class handling user authentication, data validation, and profile management
+// Definition: A class should have only one reason to change, meaning it should only have one job.
+
 //Before (Violates SRP):
-class UserManager {
-  constructor(authService, db) {
-    this.authService = authService;
-    this.db = db;
-  }
-  authenticate(username, password) {
-    // Authentication logic using authService
-  }
-  validateUserData(data) {
-    // Data validation logic
-  }
-  createUserProfile(data) {
-    // Profile creation logic using db
-  }
-  getUserProfile(userId) {
-    // Profile retrieval logic using db
-  }
+class UserService {
+    constructor(name) {
+        this.name = name;
+    }
+
+    save() {
+        
+    }
+
+    sendEmail() {
+        
+    }
 }
-// After (SRP Applied):
-class AuthenticationService {
-  authenticate(username, password) {
-    // Authentication logic
-  }
+
+
+const userService = new UserService('John Doe');
+userService.save();
+userService.sendEmail();
+
+
+
+// After
+class User {
+    constructor(name) {
+        this.name = name;
+    }
 }
-class UserDataValidator {
-  validate(data) {
-    // Data validation logic
-  }
+
+class UserRepository {
+    save(user) {
+        
+    }
 }
-class UserDatabase {
-  createUserProfile(data) {
-    // Profile creation logic
-  }
-  getUserProfile(userId) {
-    // Profile retrieval logic
-  }
+
+class UserNotification {
+    sendEmail(user) {
+        
+    }
 }
-// 2. Open/Closed Principle
-/*Use Case :-  Create an AbstractShape interface with methods for calculating area and perimeter. Concrete shapes like Circle and Square can implement this interface without modifying the original code.*/
-// Before (Violates OCP):
-class ManageSalaries {
-  constructor() {
-    this.salaryRates = [
-      { id: 1, role: 'developer', rate: 100 },
-      { id: 2, role: 'architect', rate: 200 },
-      { id: 3, role: 'manager', rate: 300 },
-    ];
-  }
-  calculateSalaries(empId, hoursWorked) {
-    let salaryObject = this.salaryRates.find((o) => o.id === empId);
-    return hoursWorked * salaryObject.rate;
-  }
+
+const user = new User('John Doe');
+const userRepo = new UserRepository();
+const userNotification = new UserNotification();
+
+userRepo.save(user);
+userNotification.sendEmail(user);
+
+
+
+2. Open/Closed Principle
+// Definition: Software entities should be open for extension but closed for modification.
+
+//Before (Violates OCP):
+
+class Shape {
+    area(type, dimensions) {
+        if (type === 'circle') {
+            return Math.PI * dimensions.radius * dimensions.radius;
+        } else if (type === 'rectangle') {
+            return dimensions.width * dimensions.height;
+        }
+    }
 }
-const mgtSalary = new ManageSalaries();
-console.log("Salary : ", mgtSalary.calculateSalaries(1, 100));
-// After (OCP Applied):
-class ManageSalaries {
-  constructor() {
-    this.salaryRates = [
-      { id: 1, role: 'developer', rate: 100 },
-      { id: 2, role: 'architect', rate: 200 },
-      { id: 3, role: 'manager', rate: 300 },
-    ];
-  }
-  calculateSalaries(empId, hoursWorked) {
-    let salaryObject = this.salaryRates.find((o) => o.id === empId);
-    return hoursWorked * salaryObject.rate;
-  }
-  addSalaryRate(id, role, rate) {
-    this.salaryRates.push({ id: id, role: role, rate: rate });
-  }
+
+const shape = new Shape();
+console.log(shape.area('circle', { radius: 5 })); // Area of circle
+console.log(shape.area('rectangle', { width: 4, height: 6 })); // Area of rectangle
+
+
+// After
+class Shape {
+    area() {
+        throw new Error("This method should be overridden!");
+    }
 }
-const mgtSalary = new ManageSalaries();
-mgtSalary.addSalaryRate(4, 'developer', 250);
-console.log('Salary : ', mgtSalary.calculateSalaries(4, 100));
-// 3. Liskov’s Substitution Principle
-//UseCase:-   If a function expects a Shape object to calculate its area, any valid subtype like Circle or Square should seamlessly replace it, maintaining the expected behavior.
+
+class Circle extends Shape {
+    constructor(radius) {
+        super();
+        this.radius = radius;
+    }
+
+    area() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class Rectangle extends Shape {
+    constructor(width, height) {
+        super();
+        this.width = width;
+        this.height = height;
+    }
+
+    area() {
+        return this.width * this.height;
+    }
+}
+
+function calculateArea(shapes) {
+    return shapes.map(shape => shape.area());
+}
+
+
+const shapes = [new Circle(5), new Rectangle(4, 6)];
+console.log(calculateArea(shapes));
+
+
+
+3. Liskov’s Substitution Principle
+// Definition: Subtypes must be substitutable for their base types without altering the correctness of the program.
+
 // Before (LSP Violates):
-interface Shape {
-  calculateArea(): number;
+class Bird {
+    fly() {
+        console.log("I can fly!");
+    }
 }
-class Rectangle implements Shape {
-  width: number;
-  height: number;
-  constructor(width: number, height: number) {
-    this.width = width;
-    this.height = height;
-  }
-  calculateArea(): number {
-    return this.width * this.height;
-  }
+
+class Penguin extends Bird {
+    fly() {
+        throw new Error("Penguins can't fly!");
+    }
 }
-class Square extends Rectangle {
-  constructor(size: number) {
-    super(size, size);
-  }
-  setWidth(width: number) {
-    this.width = width;
-    this.height = width;
-  }
-  setHeight(height: number) {
-    this.width = height;
-    this.height = height;
-  }
+
+function letBirdFly(bird) {
+    bird.fly();
 }
-function drawShape(shape: Shape) {
-  const area = shape.calculateArea();
+
+let letPenguinFly = new Penguin();
+// letBirdFly(letPenguinFly); // Throws error: Penguins can't fly!
+
+
+
+//AFter 
+class Bird {
+    fly() {
+        console.log("I can fly!");
+    }
 }
-const mySquare = new Square(5);
-mySquare.setWidth(4);
-drawShape(mySquare);
-// (LSP Applied):
-interface Shape {
-  calculateArea(): number;
+
+class Sparrow extends Bird {}
+
+class Ostrich extends Bird {
+    fly() {
+        throw new Error("Ostriches can't fly!");
+    }
 }
-class Rectangle implements Shape
-{
-  width: number;
-  height: number;
-  constructor(width: number, height: number) {
-    this.width = width;
-    this.height = height;
-  }
-  calculateArea(): number {
-    return this.width * this.height;
-  }
+
+function letBirdFly(bird) {
+    bird.fly();
 }
-function drawShape(shape: Shape) {
-  const area = shape.calculateArea();
-}
-drawShape(new Rectangle(5, 4));
-// 4. Interface Segregation Principle
-/* Use Case:-Instead of a single UserInterface with methods for both admin and user features, create separate interfaces (AdminInterface and UserInterface) exposing only relevant methods for each type of user.*/
+
+
+let letSparrowFly = new Sparrow();
+letBirdFly(letSparrowFly); // Works fine
+
+// let letOstrichFly = new Ostrich();
+// letBirdFly(letOstrichFly); // Throws error: Ostriches can't fly!
+
+
+
+
+4. Interface Segregation Principle
+// Definition: No client should be forced to depend on methods it does not use. Instead of one fat interface, many small interfaces are preferred.
+
 // Before (Violates ISP):
-Class DrivingTest {
-  constructor(userType) {
-    this.userType = userType;
-  }
-  startCarTest() {
-    console.log(“This is for Car Drivers”’);
-  }
-  startTruckTest() {
-    console.log(“This is for Truck Drivers”);
-  }
+class Worker {
+    work() {
+        // working implementation
+    }
+
+    eat() {
+        // eating implementation
+    }
 }
-class CarDrivingTest extends DrivingTest {
-  constructor(userType) {
-    super(userType);
-  }
-  startCarTest() {
-    return “Car Test Started”;
-  }
-  startTruckTest() {
-    return null;
-  }
+
+class Robot extends Worker {
+    eat() {
+        throw new Error("Robots don't eat");
+    }
 }
-class TruckDrivingTest extends DrivingTest {
-  constructor(userType) {
-    super(userType);
-  }
-  startCarTest() {
-    return null;
-  }
-  startTruckTest() {
-    return “Truck Test Started”;
-  }
+
+Explanation: The Robot class is forced to implement the eat method even though it doesn’t need it.
+
+// After
+class Workable {
+    work() {
+        // working implementation
+    }
 }
-const carTest = new CarDrivingTest(carDriver );
-console.log(carTest.startCarTest());
-console.log(carTest.startTruckTest());
-const truckTest = new TruckDrivingTest( ruckdriver );
-console.log(truckTest.startCarTest());
-console.log(truckTest.startTruckTest());
-// After (ISP Applied):
-Class DrivingTest {
-  constructor(userType) {
-    this.userType = userType;
-  }
+
+class Eatable {
+    eat() {
+        // eating implementation
+    }
 }
-class CarDrivingTest extends DrivingTest {
-  constructor(userType) {
-    super(userType);
-  }
+
+class Human extends Workable {
+    eat() {
+        // eating implementation
+    }
 }
-class TruckDrivingTest extends DrivingTest {
-  constructor(userType) {
-    super(userType);
-  }
+
+class Robot extends Workable {
+    // No eat method needed
 }
-const carUserTests = {
-  startCarTest() {
-    return ‘Car Test Started’;
-  },
-}
-const truckUserTests = {
-  startTruckTest() {
-    return ‘Truck Test Started’;
-  },
-}
-Object.assign(CarDrivingTest.prototype, carUserTests);
-Object.assign(TruckDrivingTest.prototype, truckUserTests);
-const carTest = new CarDrivingTest(carDriver );
-console.log(carTest.startCarTest());
-console.log(carTest.startTruckTest()); // Will throw an exception
-const truckTest = new TruckDrivingTest( ruckdriver );
-console.log(truckTest.startTruckTest());
-console.log(truckTest.startCarTest()); // Will throw an exception
+
+// Explanation: Now, Human implements both Workable and Eatable, while Robot only implements Workable, adhering to the Interface Segregation Principle.
 
 
 
-// 5. Dependency Inversion Principle
-//Instead of directly referencing a specific data storage implementation in your application logic, rely on an abstract DataStore interface.
+
+5. Dependency Inversion Principle
+Definition: High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces). Abstractions should not depend on details. Details should depend on abstractions.
+
 // Before (Violates DIP):
-class EmailController {
-  sendEmail(emailDetails) {
-     // Need to change this line in every controller that uses YahooAPI.const response = YahooAPI.sendEmail(emailDetails);
-    if (response.status == 200) {
-       return true;
-    } else {
-       return false;
+class Database {
+    connect() {
+        //logic
     }
-  }
 }
-// After (DIP Applied):
-class EmailController {
-  sendEmail(emailDetails) {
-    const response = EmailApiController.sendEmail(emailDetails);
-    if (response.status == 200) {
-       return true;
-    } else {
-       return false;
+
+class UserService {
+    constructor() {
+        this.db = new Database(); 
     }
-  }
 }
-class EmailApiController {
-  sendEmail(emailDetails) {
-    // Only need to change this controller. return YahooAPI.sendEmail(emailDetails);
-  }
+
+//Explanation: The UserService class is tightly coupled with the Database class. If we want to switch to a different database, we need to modify UserService.
+
+
+// After
+class Database {
+    connect() {
+        // logic
+    }
 }
+
+class UserService {
+    constructor(database) {
+        this.db = database; // depends on abstraction
+    }
+}
+
+const db = new Database();
+const userService = new UserService(db);
+
+// Explanation: Now, UserService depends on the database abstraction, allowing for easier changes to the database implementation without modifying UserService.
+
